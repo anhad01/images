@@ -7,264 +7,148 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body, html {
-            background-color:#4a7cd8d0;
+            background-color:#4a7cd8d0; 
             height: 100%;
             margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
-        }
-        audio {
-            display: none;
-        }
-        .btn {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            border: none;
-            border-radius: 50px;
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.933);
-            transition: all 0.3s ease;
-            position: absolute;
-            top: 90%;
-        }
-        .btn:hover {
-            background: linear-gradient(45deg, #2575fc, #6a11cb);
-            transform: scale(1.05);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-        .btn:active {
-            transform: scale(1);
-            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-        }
-        .top-banner {
-            width: 40%;
-            margin: 0 auto;
-        }
-        .image1, .image2, .image3, .image4, .image5, .image6 {
-            position: absolute;
-        }
-        .image1 { top: 2%; left: 2%; transform: rotate(-8deg); }
-        .image2 { top: 28%; left: 15%; transform: rotate(8deg); }
-        .image3 { top: 60.4%; left: 3%; transform: rotate(-8deg); }
-        .image4 { top: 2.5%; right: 2%; transform: rotate(-8deg); }
-        .image5 { top: 31%; right: 19%; transform: rotate(7.5deg); }
-        .image6 { top: 57.4%; right: 2%; transform: rotate(-8deg); }
-        .balloons img {
-            height: 100px;
-            position: absolute;
-            animation: move 10s linear infinite;
-        }
-        .balloons img:nth-child(1) { left: 5%; animation-duration: 14s; }
-        .balloons img:nth-child(2) { left: 10%; animation-duration: 18s; }
-        .balloons img:nth-child(3) { left: 15%; animation-duration: 16s; }
-        .balloons img:nth-child(4) { left: 20%; animation-duration: 20s; }
-        .balloons img:nth-child(5) { left: 25%; animation-duration: 15s; }
-        .balloons img:nth-child(6) { left: 30%; animation-duration: 22s; }
-        .balloons img:nth-child(7) { left: 35%; animation-duration: 13s; }
-        .balloons img:nth-child(8) { left: 40%; animation-duration: 19s; }
-        .balloons img:nth-child(9) { left: 45%; animation-duration: 17s; }
-        .balloons img:nth-child(10) { left: 50%; animation-duration: 21s; }
-        @keyframes move {
-            0% { top: -10%; transform: rotate(45deg); }
-            100% { top: 100%; transform: rotate(360deg); }
-        }
-        .container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .banner {
-            font-size: 5em;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            margin-top: 1%;
-            margin-bottom: 70px;
-        }
-        .banner span {
-            margin: 0 3px;
-        }
-        .banner .char6 {
-            margin-top: 0.5%;
-        }
-        .banner2 {
-            font-size: 5em;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 70px;
-            color: #cd4ed2;
-        }
-        .cake {
-            width: 120px;
-            height: 60px;
-            background: linear-gradient(to bottom, #d2691e, #8b4513);
-            margin: 0 auto;
-            border-radius: 10px 10px 0 0;
-            margin-top: 10px;
-        }
-        .cake::before {
-            content: '';
-            width: 70px;
-            height: 10px;
-            background: linear-gradient(to bottom, #fff, #ddd);
-            border-radius: 5px 5px 0 0;
-            position: absolute;
-            top: -10px;
-            left: 25px;
-        }
-        .candle {
-            width: 10px;
-            height: 30px;
-            background-color: yellow;
-            position: absolute;
-            top: -30px;
-            left: 55px;
-            border-radius: 5px;
-        }
-        .candle::before {
-            content: '';
-            width: 5px;
-            height: 10px;
-            background-color: #ffcc00;
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            border-radius: 50%;
-            transform: translateX(-50%);
-        }
-        .heart {
-            height: 80px;
-            width: 80px;
-            background-color: #f20024;
-            position: relative;
-            margin-left: 48%;
-            transform: rotate(-45deg);
-            margin-top: 70px;
-            box-shadow: -10px 10px 90px #f20024;
-            animation: heart 0.6s linear infinite;
-        }
-        @keyframes heart {
-            0% { transform: rotate(-45deg) scale(1.07); }
-            100% { transform: rotate(-45deg) scale(0.8); }
-        }
-        .heart::before {
-            content: '';
-            height: 80px;
-            width: 80px;
-            background: #f20024;
-            top: -50%;
-            border-radius: 50px;
-            position: absolute;
-        }
-        .heart::after {
-            content: '';
-            height: 80px;
-            width: 80px;
-            background: #f20024;
-            right: -50%;
-            border-radius: 50px;
-            position: absolute;
-        }
-        @media (max-width: 768px) {
-            .banner { font-size: 3em; }
-            .cake { width: 100px; height: 50px; }
-            .heart { height: 60px; width: 60px; }
-        }
-        @media (max-width: 480px) {
-            .top-banner { width: 80%; }
-            .cake { width: 80px; height: 40px; }
-            .heart { height: 60px; width: 60px; }
-        }
-        .face {
-            position: absolute;
-            height: 160px;
-            width: 135px;
-            background-color: #f9ebea;
-            border: 2px solid #6e2c00;
-            border-radius: 50% 50% 45% 45%;
-            left: 21%;
-            top: 7%;
         }
     </style>
 </head>
 <body>
     <div id="what" class="what">
-        <img src="./Ok.jpg" width="656" alt="">
+        <img src="./wow.jpg" width="650" height="875" alt="">
     </div>
-    <div id="content" style="display:none;">
+   
+    <div id="content" style="display:none;"> 
         <img src="https://github.com/anhad01/assignment/blob/main/java/%E2%80%94Pngtree%E2%80%94happy%20birthday%20banner%20bunting%20png_7683312.png?raw=true" class="top-banner">
-        <audio class="hbd" controls autoplay>
-            <source src="./38-Michael-Riepen-Happy-Birthday(chosic.com).mp3" type="audio/mp3">
-        </audio>
+        
+        <audio class="hbd" src="https://docs.google.com/uc?export=download&id=1FUgfLMll7NglnCzuz2asxzqHBTii0Xyv" controls></audio>
+
         <div class="balloons">
             <img src="https://github.com/anhad01/assignment/blob/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png?raw=true">
+            <img src="https://github.com/anhad01/assignment/blob/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png?raw=true">
+            <img src="https://github.com/anhad01/assignment/blob/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png?raw=true">
+            <img src="https://github.com/anhad01/assignment/blob/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png?raw=true">
+            <img src="https://github.com/anhad01/assignment/blob/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png?raw=true">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
+            <img src="https://raw.githubusercontent.com/anhad01/assignment/main/java/pngtree-red-ballons-beautiful-with-happy-birthday-or-anniversary-ballon-vector-hd-png-image_6598736.png">
         </div>
+
         <div class="image1">
-            <img src="./bacchu.jpg" height="350" width="310" alt="CONNECT TO INTERNET">
+            <img src="./smallN.jpg" height="350" width="310" alt="CONNECT TO INTERNET">
         </div>
+
         <div class="image2">
-            <img src="./cutie.jpg" height="365" alt="CONNECT TO INTERNET">
+            <img src="./green suit.jpg" height="365" alt="CONNECT TO INTERNET">
         </div>
+
         <div class="image3">
-            <img src="./pucchi.jpg" height="355" alt="CONNECT TO INTERNET">
+            <img src="./kurta.jpg" height="365" alt="connect">
         </div>
+
         <div class="image4">
-            <img src="./bahutpyari.jpg" height="365" alt="CONNECT TO INTERNET">
+            <img src="./smallN2.jpg" height="300" alt="CONNECT">
         </div>
+
         <div class="image5">
-            <img src="./aahhh.jpg" height="375" alt="CONNECT TO INTERNET">
+            <img src="./orange.jpg"  height="395"  alt="CONNECT">
         </div>
+
         <div class="image6">
-            <img src="./ulala.jpg" height="395" alt="CONNECT TO INTERNET">
+            <img src="./kashmir'.jpg" height="325" alt="">
         </div>
+        
+        
+        <div class='heart'></div>
+        
         <div class="container">
             <div class="banner">
-                <span>B</span>
-                <span>A</span>
-                <span>C</span>
-                <span>C</span>
-                <span>H</span>
-                <span class="char6">U</span>
+                <span class="char1">B</span>
+                <span class="char2">A</span>
+                <span class="char3">N</span>
+                <span class="char4">D</span>
+                <span class="char5">A</span>
+                <span class="char6">R</span>
+                <span class="char6">I</span>
+                <span class="char6">Y</span>
+                <span class="char6">A</span>
             </div>
+            
             <div class="cake">
                 <div class="candle"></div>
             </div>
-            <div class="banner2">
-                <span>I</span>
-                <span>W</span>
-                <span>U</span>
-                <span>V</span>
-                <span>Y</span>
-                <span>O</span>
-                <span>U</span>
-                <span>B</span>
-                <span>A</span>
-                <span>B</span>
-                <span>Y</span>
-            </div>
-            <div class="heart"></div>
         </div>
-    </div>
-    <button class="btn" id="btn">SHOW BIRTHDAY SURPRISE</button>
-    <script>
-        const btn = document.getElementById("btn");
-        const content = document.getElementById("content");
-        const what = document.getElementById("what");
-        const audio = document.querySelector("audio");
-        const balloons = document.querySelector(".balloons");
+    
+        <div class="face">
+            <div class="e1"></div>
+            <div class="e2">)</div>
+            <div class="m"></div>
+            <div class="h1"></div>
+            <div class="h2"></div>
+            <div class="er"></div>
+            <div class="el"></div>
+            <div class="l1"></div>
+            <div class="l2"> </div>
+            <div class="p1"></div>
+            <div class="p2"></div>
+    
+        </div>
 
-        btn.addEventListener("click", function() {
-            content.style.display = "block";
-            what.style.display = "none";
-            document.documentElement.requestFullscreen();
+        <div class="banner2">
+            <span>P</span>
+            <span>A</span>
+            <span>R</span>
+            <span>T</span>
+            <span>Y</span>
+            <span> </span>
+            <span> </span>
+            <span>P</span>
+            <span>E</span>
+            <span>N</span>
+            <span>D</span>
+            <span>I</span>
+            <span>N</span>
+            <span>G!!</span>
+        </div>
+        
+    </div>
+
+    <button id="showContentButton" class="btn">Show Birthday Surprise</button>
+
+    <script>
+        const showContentButton = document.getElementById('showContentButton');
+        const content = document.getElementById('content');
+        const what = document.getElementById('what');
+        const audio = document.querySelector('.hbd');
+
+        showContentButton.addEventListener('click', function() {
+            content.style.display = 'block';
             audio.play();
+            showContentButton.style.display = 'none'; 
+            what.style.display = 'none'; 
+            // Fullscreen request on the document
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { 
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { 
+                document.documentElement.webkitRequestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) { 
+                document.documentElement.msRequestFullscreen();
+            }
         });
     </script>
 </body>
